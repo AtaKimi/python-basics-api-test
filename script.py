@@ -64,7 +64,7 @@ def extract_weather_info(weather_data):
     temp = weather_data.get("main", {}).get("temp")
     humidity = weather_data.get("main", {}).get("humidity")
 
-    return f"City: {city}, Temperature: {temp}°C, Humidity: {humidity}%"
+    return {"City": city, "Temperature": f"{temp}°C", "Humidity": f"{humidity}%"}
 
 def create_weather_spreadsheet(data, title="Weather Data"):
     try:
@@ -84,10 +84,9 @@ def create_weather_spreadsheet(data, title="Weather Data"):
         for entry in data:
             if "error" in entry:
                 continue
-            parts = entry.split(", ")
-            city = parts[0].split(": ")[1]
-            temp = parts[1].split(": ")[1].replace("°C", "")
-            humidity = parts[2].split(": ")[1].replace("%", "")
+            city = entry["City"]
+            temp = entry["Temperature"]
+            humidity = entry["Humidity"]
             worksheet.append_row([city, temp, humidity])
         print(f"Spreadsheet created: {sheet.url}")
         return sheet.url
