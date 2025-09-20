@@ -37,7 +37,7 @@ b. ​Google Sheets API
 ​Go to "APIs & Services" -> "OAuth consent screen".
 ​Select "External" as the user type and click "CREATE".
 
-​Fill in the required fields (App name, User support email, Developer contact email).
+​Fill in the required fields (App name, User support email, Developer contact email). 
 ​Click "SAVE AND CONTINUE" until you get to the "Test users" page.
 
 ​Important: Leave the app in its default "Testing" status. Do not publish it.
@@ -55,8 +55,7 @@ b. ​Google Sheets API
 
 ​This will generate the credentials.json file your script needs.
 
-​Go to "APIs & Services" -> "Credentials".
-​Click "+ CREATE CREDENTIALS" and select "OAuth client ID".
+​Go to "APIs & Services" -> "Credentials". Click "+ CREATE CREDENTIALS" and select "OAuth client ID".
 
 ​For the "Application type", select "Desktop app".
 ​Give it a name (e.g., "Desktop Client 1") and click "CREATE".
