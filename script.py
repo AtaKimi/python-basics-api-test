@@ -26,19 +26,22 @@ def main():
         # Fetch weather data from the API
         weather_data = get_weather_data(city)
         weather_data_list.append(weather_data)
-        print(weather_data)
 
         # Extract and print specific weather information
         weather_info = extract_weather_info(weather_data)
         weather_info_list.append(weather_info)
-        print(weather_info)
 
     # Create a Google Spreadsheet and populate it with weather data
     spreadsheet = create_weather_spreadsheet(weather_info_list)
 
 def get_weather_data(city):
     # Fetch weather data from OpenWeatherMap API
-    api_key = os.getenv("WEATHER_API_KEY")
+    try:
+        api_key = os.getenv("WEATHER_API_KEY")
+    except Exception as e:
+        print(f"Error retrieving API key: {e}")
+        return {"error": "API key not found"}
+            
     base_url = "http://api.openweathermap.org/data/2.5/weather"
     params = {
         'q': city,
@@ -72,11 +75,11 @@ def create_weather_spreadsheet(data, title="Weather Data"):
         )        
         
         # Create a new spreadsheet and share it
-        sht1 = gc.create(title)
-        sht1.share(None, perm_type='anyone', role='writer')
+        sheet = gc.create(title)
+        sheet.share(None, perm_type='anyone', role='writer')
         
         # Populate the spreadsheet with weather data
-        worksheet = sht1.sheet1
+        worksheet = sheet.sheet1
         worksheet.append_row(["City", "Temperature (°C)", "Humidity (%)"])
         for entry in data:
             if "error" in entry:
@@ -86,8 +89,8 @@ def create_weather_spreadsheet(data, title="Weather Data"):
             temp = parts[1].split(": ")[1].replace("°C", "")
             humidity = parts[2].split(": ")[1].replace("%", "")
             worksheet.append_row([city, temp, humidity])
-        print(f"Spreadsheet created: {sht1.url}")
-        return sht1.url
+        print(f"Spreadsheet created: {sheet.url}")
+        return sheet.url
     except Exception as error:
         print(f"An error occurred: {error}")
         return error
