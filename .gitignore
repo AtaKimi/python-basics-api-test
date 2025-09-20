@@ -1,0 +1,6 @@
+.env
+google-api.json
+authorized_user.json
+client_secret.json
+.vscode/
+.venv/
