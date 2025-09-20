@@ -11,6 +11,10 @@ load_dotenv()
 # I did try to use a service account, but it didn't work out because I don't have workspace email.
 # So I have to use oauth2, which requires manual intervention to authenticate the first time.
 
+# I also tried to simplefy the process of installing by using docker, but it didn't work out either.
+# I just couldn't get it to work because of the oauth2 process is not straightforward.
+# So I just give up on that and just use the normal way of installing the dependencies.
+
 # List of cities to fetch weather data for
 CITY = ["London", "New York", "Tokyo"]
 def main():
