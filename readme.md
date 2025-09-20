@@ -74,3 +74,5 @@ To execute the application, run the main script from the project's root director
 ```bash
 python script.py
 ```
+
+There is a link on where the script is created on the command line. It could be used to access the created google sheet.
