@@ -20,15 +20,18 @@ Before you begin, ensure you have the following installed:
 ​This script uses OAuth 2.0 to authenticate as a regular Google user. Because the app is in "Testing" mode, you must add authorized users who can grant permission.
 
 ​1. Create a Google Cloud Project
+
 ​Go to the Google Cloud Console. ​Click the project drop-down menu at the top of the page and click "New Project". ​Give your project a name (e.g., "Python Sheets API") and click "Create".
 
 ​2. Enable the APIs
+
 ​You need to enable the Google Drive and Google Sheets APIs for your new project. ​In your new project, navigate to the "APIs & Services" dashboard. ​Click on "+ ENABLE APIS AND SERVICES".
 ​Search for and enable the following two APIs:
 a. ​Google Drive API
 b. ​Google Sheets API
 
 ​3. Configure the OAuth Consent Screen
+
 ​This screen is what users see when they grant the script permission.
 
 ​Go to "APIs & Services" -> "OAuth consent screen".
@@ -40,6 +43,7 @@ b. ​Google Sheets API
 ​Important: Leave the app in its default "Testing" status. Do not publish it.
 
 ​4. Add Test Users
+
 ​While your app is in testing mode, only registered test users can authorize it.
 
 ​On the "OAuth consent screen" page, click the "+ ADD USERS" button in the "Test users" section.
@@ -48,6 +52,7 @@ b. ​Google Sheets API
 ​Click "SAVE". The user is now authorized to use your app.
 
 ​5. Create an OAuth 2.0 Client ID
+
 ​This will generate the credentials.json file your script needs.
 
 ​Go to "APIs & Services" -> "Credentials".
@@ -59,6 +64,7 @@ b. ​Google Sheets API
 ​A window will pop up. Click "DOWNLOAD JSON".
 
 ​6. Final Steps
+
 ​Rename the downloaded JSON file to credentials.json and move it into your project's root directory.
 
 ​Run the script for the first time. A browser window will open, asking you to log in to the Google account you added as a test user.
